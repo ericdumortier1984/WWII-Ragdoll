@@ -23,9 +23,10 @@ int main()
 					break;
 				}
 				if (event.key.code == Keyboard::Enter) {
-					RenderWindow M1(VideoMode(1024, 600), "");
-					RenderWindow OPTIONS(VideoMode(1024, 600), "OPTIONS");
-					RenderWindow ABOUT(VideoMode(1024, 600), "ABOUT");
+					RenderWindow M1(VideoMode(1024, 600), "MISSION 1");
+					RenderWindow M2(VideoMode(1024, 600), "MISSION 2");
+					RenderWindow M3(VideoMode(1024, 600), "MISSION 3");
+					RenderWindow INFO(VideoMode(1024, 600), "INFO");
 
 					int x = mainMenu.MainMenuPressed();
 					if (x == 0) {
@@ -41,8 +42,9 @@ int main()
 									}
 								}
 							}
-							OPTIONS.close();
-							ABOUT.close();
+							M2.close();
+							M3.close();
+							INFO.close();
 							M1.clear();
 							Mission1* Go;
 							Go = new Mission1(1024, 600);
@@ -51,44 +53,66 @@ int main()
 						}
 					}
 					if (x == 1) {
-						while (OPTIONS.isOpen()) {
+						while (M2.isOpen()) {
 							Event aevent;
-							while (OPTIONS.pollEvent(aevent)) {
+							while (M2.pollEvent(aevent)) {
 								if (aevent.type == Event::Closed) {
-									OPTIONS.close();
+									M2.close();
 								}
 								if (aevent.type == Event::KeyPressed) {
 									if (aevent.key.code == Keyboard::Escape) {
-										OPTIONS.close();
+										M2.close();
 									}
 								}
 							}
 							M1.close();
-							OPTIONS.clear();
-							ABOUT.close();
-							OPTIONS.display();
+							M2.clear();
+							M3.close();
+							INFO.close();
+							M2.display();
 						}
 					}
 					if (x == 2) {
-						while (ABOUT.isOpen()) {
+						while (M3.isOpen()) {
 							Event aevent;
-							while (ABOUT.pollEvent(aevent)) {
+							while (M3.pollEvent(aevent)) {
 								if (aevent.type == Event::Closed) {
-									ABOUT.close();
+									M3.close();
 								}
 								if (aevent.type == Event::KeyPressed) {
 									if (aevent.key.code == Keyboard::Escape) {
-										ABOUT.close();
+										M3.close();
 									}
 								}
 							}
 							M1.close();
-							OPTIONS.close();
-							ABOUT.clear();
-							ABOUT.display();
+							M3.clear();
+							M2.close();
+							INFO.close();
+							M3.display();
 						}
 					}
 					if (x == 3) {
+						while (INFO.isOpen()) {
+							Event aevent;
+							while (INFO.pollEvent(aevent)) {
+								if (aevent.type == Event::Closed) {
+									INFO.close();
+								}
+								if (aevent.type == Event::KeyPressed) {
+									if (aevent.key.code == Keyboard::Escape) {
+										INFO.close();
+									}
+								}
+							}
+							M1.close();
+							M2.close();
+							M3.close();
+							INFO.clear();
+							INFO.display();
+						}
+					}
+					if (x == 4) {
 						MENU.close();
 						break;
 					}

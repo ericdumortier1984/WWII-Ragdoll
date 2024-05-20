@@ -8,6 +8,13 @@ Mission1::Mission1(int _width, int _height)
 	_fps = 60;
 	_frametime = 1.f / _fps;
 	_wnd->setFramerateLimit(_fps);
+
+	_M1Tx = new Texture;
+	_M1Sp = new Sprite;
+	_M1Tx->loadFromFile("Asset/Mission_1.png");
+	_M1Sp->setTexture(*_M1Tx);
+	_M1Sp->setScale(Vector2f(0.2f, 0.5f));
+
 	InitPhysics();
 	SetZoom();
 	_shot = false;
@@ -73,13 +80,6 @@ void Mission1::DoEvents()
 			if (evt.key.code == Keyboard::P)
 			{
 				GamePause();
-			}
-		}
-		if (evt.type == Event::KeyPressed)
-		{
-			if (evt.key.code == Keyboard::R)
-			{
-				RestartGame();
 			}
 		}
 	}
@@ -219,6 +219,7 @@ float Mission1::CalculateCannonAngle(Vector2f _mouseWorldPos)
 void Mission1::DrawGame()
 {
 
+	_wnd->draw(*_M1Sp);
 }
 
 void Mission1::GamePause()
@@ -232,14 +233,6 @@ void Mission1::GamePause()
 	{
 		_gameStarted = true;
 	}
-}
-
-void Mission1::RestartGame()
-{
-
-	_gameStarted = false;
-	_gameRestarted = true;
-
 }
 
 Mission1::~Mission1(void)

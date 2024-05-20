@@ -26,26 +26,33 @@ private:
 	bool _gameStarted;
 	bool _gameRestarted;
 
-	//Ventanas
+	//Ventana
 	RenderWindow* _wnd;
 
+	//SFML
 	SFML* _render;
 	Color _clearColor;
 
+	//Box2D
 	b2World* _world;
 	b2Body* _bodies[6];
 	b2Body* _limitsScreen[4];
 	b2Body* _barrel[2];
 	b2Body* _platform;
 	b2Body* _cannon[2];
-	Vector2f _cannonPos;
-
+	
+	//Texturas y sprites
 	Texture* _M1Tx;
 	Sprite* _M1Sp;
 
-	Music _musicMenu, _musicM1;
+	//Vector para posicion del tanque
+	Vector2f _cannonPos;
+
+	//Audio
+	Music _musicM1;
 	SoundBuffer _startGame;
 
+	//Fuente
 	Font _font;
 	Text _text;
 
@@ -57,7 +64,6 @@ private:
 	void DrawGame();
 
 	void GamePause();
-	void RestartGame();
 
 	void CreateAndShootRagdoll(float angle, float force);
 	void UpdateCannonPosition();
