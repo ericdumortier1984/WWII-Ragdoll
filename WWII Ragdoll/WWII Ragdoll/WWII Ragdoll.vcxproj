@@ -137,12 +137,17 @@
     <ClInclude Include="Main Menu.h" />
     <ClInclude Include="MainHeader.h" />
     <ClInclude Include="Mission1.h" />
+    <ClInclude Include="Mission2.h" />
+    <ClInclude Include="Mission3.h" />
     <ClInclude Include="Sfml_renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Go.cpp" />
+    <ClCompile Include="Info.cpp" />
     <ClCompile Include="Main Menu.cpp" />
     <ClCompile Include="Mission1.cpp" />
+    <ClCompile Include="Mission2.cpp" />
+    <ClCompile Include="Mission3.cpp" />
     <ClCompile Include="Sfml_renderer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

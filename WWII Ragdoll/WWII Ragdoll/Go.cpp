@@ -1,4 +1,6 @@
 #include "Mission1.h"
+#include "Mission2.h"
+#include "Mission3.h"
 #include "Main Menu.h"
 
 int main()
@@ -69,6 +71,9 @@ int main()
 							M2.clear();
 							M3.close();
 							INFO.close();
+							Mission2* Go;
+							Go = new Mission2(1024, 600);
+							Go->Loop();
 							M2.display();
 						}
 					}
@@ -89,6 +94,9 @@ int main()
 							M3.clear();
 							M2.close();
 							INFO.close();
+							Mission3* Go;
+							Go = new Mission3(1024, 600);
+							Go->Loop();
 							M3.display();
 						}
 					}
