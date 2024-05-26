@@ -29,9 +29,9 @@ void Mission1::Loop()
 	{
 		_wnd->clear(_clearColor);
 		DoEvents();
-		DrawGame();
 		UpdatePhysics();
 		UpdateCannonPosition();
+		DrawGame();
 		_wnd->display();
 	}
 }
@@ -97,11 +97,49 @@ void Mission1::InitPhysics()
 	_platform = Box2d::CreateRectangularStaticBody(_world, 15.f, 3.f);
 	_platform->SetTransform(b2Vec2(80.f, 30.f), 0.f);
 
-	//barriles
-	_barrel[0] = Box2d::CreateRectangularDynamicBody(_world, 5.f, 10.f, 0.5f, 0.f, 0.f);
-	_barrel[0]->SetTransform(b2Vec2(75.f, 25.f), 0.f);
-	_barrel[1] = Box2d::CreateRectangularDynamicBody(_world, 5.f, 10.f, 0.5f, 0.f, 0.f);
-	_barrel[1]->SetTransform(b2Vec2(85.f, 25.f), 0.f);
+	//barril
+	_barrelApple = Box2d::CreateRectangularDynamicBody(_world, 5.f, 10.f, 0.5f, 0.f, 0.f);
+	_barrelApple->SetTransform(b2Vec2(75.f, 25.f), 0.f);
+
+	_appleSp = new Sprite;
+	_appleTex = new Texture;
+	_appleTex->loadFromFile("Asset/Apples.png");
+	_appleSp->setTexture(*_appleTex);
+
+	_apple = new Avatar(_barrelApple, _appleSp);
+
+	//municion
+	_munitionb2d = Box2d::CreateRectangularDynamicBody(_world, 5.f, 10.f, 0.5f, 0.f, 0.f);
+	_munitionb2d->SetTransform(b2Vec2(75.f, 45.f), 0.f);
+
+	_munitionSp = new Sprite;
+	_munitionTex = new Texture;
+	_munitionTex->loadFromFile("Asset/Munition.png");
+	_munitionSp->setTexture(*_munitionTex);
+
+	_munition = new Avatar(_munitionb2d, _munitionSp);
+
+	//gasolina
+	_gasolineb2d = Box2d::CreateRectangularDynamicBody(_world, 5.f, 10.f, 0.5f, 0.f, 0.f);
+	_gasolineb2d->SetTransform(b2Vec2(65.f, 45.f), 0.f);
+
+	_gasolineSp = new Sprite;
+	_gasolineTex = new Texture;
+	_gasolineTex->loadFromFile("Asset/Gas_5lts.png");
+	_gasolineSp->setTexture(*_gasolineTex);
+
+	_gasoline = new Avatar(_gasolineb2d, _gasolineSp);
+
+	//Botiquin médico
+	_healthb2d = Box2d::CreateRectangularDynamicBody(_world, 5.f, 10.f, 0.5f, 0.f, 0.f);
+	_healthb2d->SetTransform(b2Vec2(85.f, 45.f), 0.f);
+
+	_healthSp = new Sprite;
+	_healthTex = new Texture;
+	_healthTex->loadFromFile("Asset/Health_bag.png");
+	_healthSp->setTexture(*_healthTex);
+
+	_health = new Avatar(_healthb2d, _healthSp);
 
 	//limites de la pantalla
 	_limitsScreen[0] = Box2d::CreateRectangularStaticBody(_world, 2.5f, 100.f);
@@ -114,11 +152,18 @@ void Mission1::InitPhysics()
 	_limitsScreen[3]->SetTransform(b2Vec2(50.f, 100.f), 0.f);
 
 	//Cañon
-	_cannon[0] = Box2d::CreateRectangularKinematicBody(_world, 10.f, 5.f); // Cuerpo
-	_cannon[1] = Box2d::CreateCircularStaticBody(_world, 2.f); // Rueda
-	_cannon[1]->SetTransform(b2Vec2(4.f, 96.f), 0.f);
+	_cannon = Box2d::CreateRectangularKinematicBody(_world, 10.f, 5.f); // Cuerpo
+	//_cannon = Box2d::CreateCircularStaticBody(_world, 2.f); // Rueda
+	_cannon->SetTransform(b2Vec2(4.f, 96.f), 0.f);
 
-	Box2d::CreateDistanceJoint(_world, _cannon[1], b2Vec2(_cannon[1]->GetWorldCenter()), _cannon[0], b2Vec2(_cannon[0]->GetWorldCenter()), 0.f, 0.f, 1.f);
+	_tankSp = new Sprite;
+	_tankTex = new Texture;
+	_tankTex->loadFromFile("Asset/Pixel_tank.png");
+	_tankSp->setTexture(*_tankTex);
+
+	_tank = new Avatar(_cannon, _tankSp);
+
+	//Box2d::CreateDistanceJoint(_world, _cannon[1], b2Vec2(_cannon[1]->GetWorldCenter()), _cannon[0], b2Vec2(_cannon[0]->GetWorldCenter()), 0.f, 0.f, 1.f);
 
 	//ragdoll
 	_bodies[0] = Box2d::CreateCircularDynamicBody(_world, 1.f, 0.3f, 0.f, 0.1f); // Cabeza
@@ -163,12 +208,12 @@ void Mission1::CreateAndShootRagdoll(float angle, float force)
 	_bodies[5] = Box2d::CreateRectangularDynamicBody(_world, 1.f, 2.f, 0.1f, 0.f, 0.1f); // Pierna derecha
 
 	//posiciones
-	_bodies[0]->SetTransform(b2Vec2(_cannon[0]->GetWorldCenter().x + 9.5f, _cannon[0]->GetWorldCenter().y), 0.f);
-	_bodies[1]->SetTransform(b2Vec2(_cannon[0]->GetWorldCenter().x + 9.5f, _cannon[0]->GetWorldCenter().y + 3.f), 0.f);
-	_bodies[2]->SetTransform(b2Vec2(_cannon[0]->GetWorldCenter().x + 8.5f, _cannon[0]->GetWorldCenter().y + 2.f), -50.f);
-	_bodies[3]->SetTransform(b2Vec2(_cannon[0]->GetWorldCenter().x + 10.5f, _cannon[0]->GetWorldCenter().y + 2.f), 50.f);
-	_bodies[4]->SetTransform(b2Vec2(_cannon[0]->GetWorldCenter().x + 8.5f, _cannon[0]->GetWorldCenter().y + 5.f), -50.f);
-	_bodies[5]->SetTransform(b2Vec2(_cannon[0]->GetWorldCenter().x + 10.5f, _cannon[0]->GetWorldCenter().y + 5.f), 50.f);
+	_bodies[0]->SetTransform(b2Vec2(_cannon->GetWorldCenter().x + 9.5f, _cannon->GetWorldCenter().y), 0.f);
+	_bodies[1]->SetTransform(b2Vec2(_cannon->GetWorldCenter().x + 9.5f, _cannon->GetWorldCenter().y + 3.f), 0.f);
+	_bodies[2]->SetTransform(b2Vec2(_cannon->GetWorldCenter().x + 8.5f, _cannon->GetWorldCenter().y + 2.f), -50.f);
+	_bodies[3]->SetTransform(b2Vec2(_cannon->GetWorldCenter().x + 10.5f, _cannon->GetWorldCenter().y + 2.f), 50.f);
+	_bodies[4]->SetTransform(b2Vec2(_cannon->GetWorldCenter().x + 8.5f, _cannon->GetWorldCenter().y + 5.f), -50.f);
+	_bodies[5]->SetTransform(b2Vec2(_cannon->GetWorldCenter().x + 10.5f, _cannon->GetWorldCenter().y + 5.f), 50.f);
 
 	//joints
 	Box2d::CreateDistanceJoint(_world, _bodies[0], b2Vec2(_bodies[0]->GetWorldCenter()), _bodies[1], b2Vec2(_bodies[1]->GetWorldCenter()), 0.f, 0.f, 0.1f);
@@ -202,7 +247,7 @@ void Mission1::UpdateCannonPosition()
 	float angle = atan2(dy, dx);
 	float force = 50.0f + (distance * 2.0f);
 
-	_cannon[0]->SetTransform(b2Vec2(_cannonPos.x, _cannonPos.y), angle);
+	_cannon->SetTransform(b2Vec2(_cannonPos.x, _cannonPos.y), angle);
 }
 
 float Mission1::CalculateCannonAngle(Vector2f _mouseWorldPos)
@@ -219,7 +264,17 @@ float Mission1::CalculateCannonAngle(Vector2f _mouseWorldPos)
 void Mission1::DrawGame()
 {
 
-	_wnd->draw(*_M1Sp);
+	//_wnd->draw(*_M1Sp);
+	_apple->UpdateSprites();
+	_apple->DrawSprite(*_wnd);
+	_munition->UpdateSprites();
+	_munition->DrawSprite(*_wnd);
+	_gasoline->UpdateSprites();
+	_gasoline->DrawSprite(*_wnd);
+	_health->UpdateSprites();
+	_health->DrawSprite(*_wnd);
+	_tank->UpdateSprites();
+	_tank->DrawSprite(*_wnd);
 }
 
 void Mission1::GamePause()
@@ -238,8 +293,8 @@ void Mission1::GamePause()
 Mission1::~Mission1(void)
 {
 	_world->DestroyBody(_bodies[6]);
-	_world->DestroyBody(_barrel[2]);
-	_world->DestroyBody(_cannon[2]);
+	_world->DestroyBody(_barrelApple);
+	_world->DestroyBody(_cannon);
 	_world->DestroyBody(_platform);
 	_world->DestroyBody(_limitsScreen[4]);
 }

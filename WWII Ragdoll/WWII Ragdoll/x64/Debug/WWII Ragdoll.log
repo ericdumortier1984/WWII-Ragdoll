@@ -1,6 +1,6 @@
-﻿  Mission2.cpp
-C:\Users\gabri\Documents\ERIC CURSO\Tecnicatura en Videojuegos\MODELOS Y ALGORITMOS II\WWII Ragdoll\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\Mission2.cpp(65,20): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\gabri\Documents\ERIC CURSO\Tecnicatura en Videojuegos\MODELOS Y ALGORITMOS II\WWII Ragdoll\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\Mission2.cpp(186,63): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\gabri\Documents\ERIC CURSO\Tecnicatura en Videojuegos\MODELOS Y ALGORITMOS II\WWII Ragdoll\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\Mission2.cpp(186,28): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\gabri\Documents\ERIC CURSO\Tecnicatura en Videojuegos\MODELOS Y ALGORITMOS II\WWII Ragdoll\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\Mission2.cpp(214,17): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+﻿  Mission1.cpp
+C:\Users\gabri\Documents\ERIC CURSO\Tecnicatura en Videojuegos\MODELOS Y ALGORITMOS II\WWII Ragdoll\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\Mission1.cpp(65,20): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\gabri\Documents\ERIC CURSO\Tecnicatura en Videojuegos\MODELOS Y ALGORITMOS II\WWII Ragdoll\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\Mission1.cpp(231,63): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\gabri\Documents\ERIC CURSO\Tecnicatura en Videojuegos\MODELOS Y ALGORITMOS II\WWII Ragdoll\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\Mission1.cpp(231,28): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\gabri\Documents\ERIC CURSO\Tecnicatura en Videojuegos\MODELOS Y ALGORITMOS II\WWII Ragdoll\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\Mission1.cpp(259,17): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
   WWII Ragdoll.vcxproj -> C:\Users\gabri\Documents\ERIC CURSO\Tecnicatura en Videojuegos\MODELOS Y ALGORITMOS II\WWII Ragdoll\WWII-Ragdoll\WWII Ragdoll\x64\Debug\WWII Ragdoll.exe
