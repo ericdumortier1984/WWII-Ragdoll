@@ -2,7 +2,7 @@
 #include "MainHeader.h"
 #include "Box2d.h"
 #include "Sfml_renderer.h"
-#define M_PI 3.14159265358979323846
+#include "Avatar.h"
 
 class Mission3
 {
@@ -38,11 +38,15 @@ private:
 	b2Body* _limitsScreen[4];
 	b2Body* _barrel[2];
 	b2Body* _platform;
-	b2Body* _cannon[2];
+	b2Body* _cannon;
 
 	//Texturas y sprites
 	Texture* _M1Tx;
 	Sprite* _M1Sp;
+	Sprite* _tankSp;
+	Texture* _tankTex;
+
+	Avatar* _tank;
 
 	//Vector para posicion del tanque
 	Vector2f _cannonPos;

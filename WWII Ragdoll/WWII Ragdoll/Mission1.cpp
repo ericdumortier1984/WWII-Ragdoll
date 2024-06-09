@@ -160,6 +160,7 @@ void Mission1::InitPhysics()
 	_tankTex = new Texture;
 	_tankTex->loadFromFile("Asset/Pixel_tank.png");
 	_tankSp->setTexture(*_tankTex);
+	_tankSp->setOrigin(5.f, 2.5f);
 
 	_tank = new Avatar(_cannon, _tankSp);
 
@@ -198,6 +199,12 @@ void Mission1::CreateAndShootRagdoll(float angle, float force)
 	Vector2i mousePos = Mouse::getPosition(*_wnd);
 	Vector2f mousePosWorld = _wnd->mapPixelToCoords(mousePos);
 
+	// Obtener la posición de la punta del cañón
+	float cannonLength = 10.f; // Longitud del cañón
+	float cannonAngle = _cannon->GetAngle();
+	float cannonTipX = _cannonPos.x + cannonLength * cos(cannonAngle);
+	float cannonTipY = _cannonPos.y + cannonLength * sin(cannonAngle);
+
 	// ragdolls
 	b2Body* _bodies[6];
 	_bodies[0] = Box2d::CreateCircularDynamicBody(_world, 1.f, 0.3f, 0.f, 0.1f); // Cabeza
@@ -208,12 +215,12 @@ void Mission1::CreateAndShootRagdoll(float angle, float force)
 	_bodies[5] = Box2d::CreateRectangularDynamicBody(_world, 1.f, 2.f, 0.1f, 0.f, 0.1f); // Pierna derecha
 
 	//posiciones
-	_bodies[0]->SetTransform(b2Vec2(_cannon->GetWorldCenter().x + 9.5f, _cannon->GetWorldCenter().y), 0.f);
-	_bodies[1]->SetTransform(b2Vec2(_cannon->GetWorldCenter().x + 9.5f, _cannon->GetWorldCenter().y + 3.f), 0.f);
-	_bodies[2]->SetTransform(b2Vec2(_cannon->GetWorldCenter().x + 8.5f, _cannon->GetWorldCenter().y + 2.f), -50.f);
-	_bodies[3]->SetTransform(b2Vec2(_cannon->GetWorldCenter().x + 10.5f, _cannon->GetWorldCenter().y + 2.f), 50.f);
-	_bodies[4]->SetTransform(b2Vec2(_cannon->GetWorldCenter().x + 8.5f, _cannon->GetWorldCenter().y + 5.f), -50.f);
-	_bodies[5]->SetTransform(b2Vec2(_cannon->GetWorldCenter().x + 10.5f, _cannon->GetWorldCenter().y + 5.f), 50.f);
+	_bodies[0]->SetTransform(b2Vec2(cannonTipX, cannonTipY), 0.f);
+	_bodies[1]->SetTransform(b2Vec2(cannonTipX, cannonTipY + 3.f), 0.f);
+	_bodies[2]->SetTransform(b2Vec2(cannonTipX - 0.5f, cannonTipY + 2.f), -50.f);
+	_bodies[3]->SetTransform(b2Vec2(cannonTipX + 0.5f, cannonTipY + 2.f), 50.f);
+	_bodies[4]->SetTransform(b2Vec2(cannonTipX - 0.5f, cannonTipY + 5.f), -50.f);
+	_bodies[5]->SetTransform(b2Vec2(cannonTipX + 0.5f, cannonTipY + 5.f), 50.f);
 
 	//joints
 	Box2d::CreateDistanceJoint(_world, _bodies[0], b2Vec2(_bodies[0]->GetWorldCenter()), _bodies[1], b2Vec2(_bodies[1]->GetWorldCenter()), 0.f, 0.f, 0.1f);

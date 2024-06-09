@@ -114,11 +114,19 @@ void Mission3::InitPhysics()
 	_limitsScreen[3]->SetTransform(b2Vec2(50.f, 100.f), 0.f);
 
 	//Cañon
-	_cannon[0] = Box2d::CreateRectangularKinematicBody(_world, 10.f, 5.f); // Cuerpo
-	_cannon[1] = Box2d::CreateCircularStaticBody(_world, 2.f); // Rueda
-	_cannon[1]->SetTransform(b2Vec2(4.f, 96.f), 0.f);
+	_cannon = Box2d::CreateRectangularKinematicBody(_world, 10.f, 5.f); // Cuerpo
+	//_cannon[1] = Box2d::CreateCircularStaticBody(_world, 2.f); // Rueda
+	_cannon->SetTransform(b2Vec2(4.f, 96.f), 0.f);
 
-	Box2d::CreateDistanceJoint(_world, _cannon[1], b2Vec2(_cannon[1]->GetWorldCenter()), _cannon[0], b2Vec2(_cannon[0]->GetWorldCenter()), 0.f, 0.f, 1.f);
+	_tankSp = new Sprite;
+	_tankTex = new Texture;
+	_tankTex->loadFromFile("Asset/Pixel_tank.png");
+	_tankSp->setTexture(*_tankTex);
+	_tankSp->setOrigin(5.f, 2.5f);
+
+	_tank = new Avatar(_cannon, _tankSp);
+
+	//Box2d::CreateDistanceJoint(_world, _cannon[1], b2Vec2(_cannon[1]->GetWorldCenter()), _cannon[0], b2Vec2(_cannon[0]->GetWorldCenter()), 0.f, 0.f, 1.f);
 
 	//ragdoll
 	_bodies[0] = Box2d::CreateCircularDynamicBody(_world, 1.f, 0.3f, 0.f, 0.1f); // Cabeza
@@ -153,6 +161,12 @@ void Mission3::CreateAndShootRagdoll(float angle, float force)
 	Vector2i mousePos = Mouse::getPosition(*_wnd);
 	Vector2f mousePosWorld = _wnd->mapPixelToCoords(mousePos);
 
+	// Obtener la posición de la punta del cañón
+	float cannonLength = 10.f; // Longitud del cañón
+	float cannonAngle = _cannon->GetAngle();
+	float cannonTipX = _cannonPos.x + cannonLength * cos(cannonAngle);
+	float cannonTipY = _cannonPos.y + cannonLength * sin(cannonAngle);
+
 	// ragdolls
 	b2Body* _bodies[6];
 	_bodies[0] = Box2d::CreateCircularDynamicBody(_world, 1.f, 0.3f, 0.f, 0.1f); // Cabeza
@@ -163,12 +177,12 @@ void Mission3::CreateAndShootRagdoll(float angle, float force)
 	_bodies[5] = Box2d::CreateRectangularDynamicBody(_world, 1.f, 2.f, 0.1f, 0.f, 0.1f); // Pierna derecha
 
 	//posiciones
-	_bodies[0]->SetTransform(b2Vec2(_cannon[0]->GetWorldCenter().x + 9.5f, _cannon[0]->GetWorldCenter().y), 0.f);
-	_bodies[1]->SetTransform(b2Vec2(_cannon[0]->GetWorldCenter().x + 9.5f, _cannon[0]->GetWorldCenter().y + 3.f), 0.f);
-	_bodies[2]->SetTransform(b2Vec2(_cannon[0]->GetWorldCenter().x + 8.5f, _cannon[0]->GetWorldCenter().y + 2.f), -50.f);
-	_bodies[3]->SetTransform(b2Vec2(_cannon[0]->GetWorldCenter().x + 10.5f, _cannon[0]->GetWorldCenter().y + 2.f), 50.f);
-	_bodies[4]->SetTransform(b2Vec2(_cannon[0]->GetWorldCenter().x + 8.5f, _cannon[0]->GetWorldCenter().y + 5.f), -50.f);
-	_bodies[5]->SetTransform(b2Vec2(_cannon[0]->GetWorldCenter().x + 10.5f, _cannon[0]->GetWorldCenter().y + 5.f), 50.f);
+	_bodies[0]->SetTransform(b2Vec2(cannonTipX, cannonTipY), 0.f);
+	_bodies[1]->SetTransform(b2Vec2(cannonTipX, cannonTipY + 3.f), 0.f);
+	_bodies[2]->SetTransform(b2Vec2(cannonTipX - 0.5f, cannonTipY + 2.f), -50.f);
+	_bodies[3]->SetTransform(b2Vec2(cannonTipX + 0.5f, cannonTipY + 2.f), 50.f);
+	_bodies[4]->SetTransform(b2Vec2(cannonTipX - 0.5f, cannonTipY + 5.f), -50.f);
+	_bodies[5]->SetTransform(b2Vec2(cannonTipX + 0.5f, cannonTipY + 5.f), 50.f);
 
 	//joints
 	Box2d::CreateDistanceJoint(_world, _bodies[0], b2Vec2(_bodies[0]->GetWorldCenter()), _bodies[1], b2Vec2(_bodies[1]->GetWorldCenter()), 0.f, 0.f, 0.1f);
@@ -202,7 +216,7 @@ void Mission3::UpdateCannonPosition()
 	float angle = atan2(dy, dx);
 	float force = 50.0f + (distance * 2.0f);
 
-	_cannon[0]->SetTransform(b2Vec2(_cannonPos.x, _cannonPos.y), angle);
+	_cannon->SetTransform(b2Vec2(_cannonPos.x, _cannonPos.y), angle);
 }
 
 float Mission3::CalculateCannonAngle(Vector2f _mouseWorldPos)
@@ -239,7 +253,7 @@ Mission3::~Mission3(void)
 {
 	_world->DestroyBody(_bodies[6]);
 	_world->DestroyBody(_barrel[2]);
-	_world->DestroyBody(_cannon[2]);
+	_world->DestroyBody(_cannon);
 	_world->DestroyBody(_platform);
 	_world->DestroyBody(_limitsScreen[4]);
 }

@@ -1,6 +1,18 @@
-﻿  Mission1.cpp
-C:\Users\gabri\Documents\ERIC CURSO\Tecnicatura en Videojuegos\MODELOS Y ALGORITMOS II\WWII Ragdoll\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\Mission1.cpp(65,20): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\gabri\Documents\ERIC CURSO\Tecnicatura en Videojuegos\MODELOS Y ALGORITMOS II\WWII Ragdoll\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\Mission1.cpp(231,63): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\gabri\Documents\ERIC CURSO\Tecnicatura en Videojuegos\MODELOS Y ALGORITMOS II\WWII Ragdoll\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\Mission1.cpp(231,28): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\gabri\Documents\ERIC CURSO\Tecnicatura en Videojuegos\MODELOS Y ALGORITMOS II\WWII Ragdoll\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\Mission1.cpp(259,17): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+﻿  Go.cpp
+C:\Users\gabri\Documents\ERIC CURSO\Tecnicatura en Videojuegos\MODELOS Y ALGORITMOS II\WWII Ragdoll\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\Go.cpp(10,52): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\gabri\Documents\ERIC CURSO\Tecnicatura en Videojuegos\MODELOS Y ALGORITMOS II\WWII Ragdoll\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\Go.cpp(10,34): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
+          with
+          [
+              T=unsigned int
+          ]
+  Mission3.cpp
+C:\Users\gabri\Documents\ERIC CURSO\Tecnicatura en Videojuegos\MODELOS Y ALGORITMOS II\WWII Ragdoll\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\Mission3.cpp(65,20): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\gabri\Documents\ERIC CURSO\Tecnicatura en Videojuegos\MODELOS Y ALGORITMOS II\WWII Ragdoll\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\Mission3.cpp(200,63): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\gabri\Documents\ERIC CURSO\Tecnicatura en Videojuegos\MODELOS Y ALGORITMOS II\WWII Ragdoll\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\Mission3.cpp(200,28): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\gabri\Documents\ERIC CURSO\Tecnicatura en Videojuegos\MODELOS Y ALGORITMOS II\WWII Ragdoll\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\Mission3.cpp(228,17): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+  Generando código...
   WWII Ragdoll.vcxproj -> C:\Users\gabri\Documents\ERIC CURSO\Tecnicatura en Videojuegos\MODELOS Y ALGORITMOS II\WWII Ragdoll\WWII-Ragdoll\WWII Ragdoll\x64\Debug\WWII Ragdoll.exe
