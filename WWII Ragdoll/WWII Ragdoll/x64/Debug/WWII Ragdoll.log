@@ -1,12 +1,30 @@
-﻿  Go.cpp
-C:\Users\gabri\Documents\ERIC CURSO\Tecnicatura en Videojuegos\MODELOS Y ALGORITMOS II\WWII Ragdoll\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\Go.cpp(10,52): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
-          with
-          [
-              T=unsigned int
-          ]
-C:\Users\gabri\Documents\ERIC CURSO\Tecnicatura en Videojuegos\MODELOS Y ALGORITMOS II\WWII Ragdoll\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\Go.cpp(10,34): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
-          with
-          [
-              T=unsigned int
-          ]
-  WWII Ragdoll.vcxproj -> C:\Users\gabri\Documents\ERIC CURSO\Tecnicatura en Videojuegos\MODELOS Y ALGORITMOS II\WWII Ragdoll\WWII-Ragdoll\WWII Ragdoll\x64\Debug\WWII Ragdoll.exe
+﻿  Avatar.cpp
+C:\Users\NoxiePC\Documents\Modelos y Algoritmos II\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\MainHeader.h(3,10): error C1083: No se puede abrir el archivo incluir: 'SFML/Graphics.hpp': No such file or directory
+  (compilando archivo de origen "Avatar.cpp")
+  
+  Go.cpp
+C:\Users\NoxiePC\Documents\Modelos y Algoritmos II\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\MainHeader.h(3,10): error C1083: No se puede abrir el archivo incluir: 'SFML/Graphics.hpp': No such file or directory
+  (compilando archivo de origen "Go.cpp")
+  
+  Info.cpp
+  Main Menu.cpp
+C:\Users\NoxiePC\Documents\Modelos y Algoritmos II\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\MainHeader.h(3,10): error C1083: No se puede abrir el archivo incluir: 'SFML/Graphics.hpp': No such file or directory
+  (compilando archivo de origen "Main%20Menu.cpp")
+  
+  Mission1.cpp
+C:\Users\NoxiePC\Documents\Modelos y Algoritmos II\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\MainHeader.h(3,10): error C1083: No se puede abrir el archivo incluir: 'SFML/Graphics.hpp': No such file or directory
+  (compilando archivo de origen "Mission1.cpp")
+  
+  Mission2.cpp
+C:\Users\NoxiePC\Documents\Modelos y Algoritmos II\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\MainHeader.h(3,10): error C1083: No se puede abrir el archivo incluir: 'SFML/Graphics.hpp': No such file or directory
+  (compilando archivo de origen "Mission2.cpp")
+  
+  Mission3.cpp
+C:\Users\NoxiePC\Documents\Modelos y Algoritmos II\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\MainHeader.h(3,10): error C1083: No se puede abrir el archivo incluir: 'SFML/Graphics.hpp': No such file or directory
+  (compilando archivo de origen "Mission3.cpp")
+  
+  Sfml_renderer.cpp
+C:\Users\NoxiePC\Documents\Modelos y Algoritmos II\WWII-Ragdoll\WWII Ragdoll\WWII Ragdoll\Sfml_renderer.h(2,10): error C1083: No se puede abrir el archivo incluir: 'box2d/box2d.h': No such file or directory
+  (compilando archivo de origen "Sfml_renderer.cpp")
+  
+  Generando código...
